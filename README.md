@@ -22,8 +22,12 @@ A React Native (Expo) application with an iOS Widget Extension that displays cur
   - Select WeatherApp scheme and run on a simulator/device
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f3928328-2c93-4d8e-9fa4-68b3b831b304" 
-       alt="Demo GIF" 
+  <img src="https://github.com/user-attachments/assets/12cd09b4-bff6-4747-b8c0-a11deb144391" 
+       alt="Simulator Screenshot - iPhone 15 Pro - 2025-10-22 at 17 04 50" 
+       height="700px" 
+       style="border-radius:10px; margin-right:5px;"/>
+  <img src="https://github.com/user-attachments/assets/088388f5-fb21-4aef-ad4d-4f931999248d" 
+       alt="Simulator Screenshot - iPhone 15 Pro - 2025-10-22 at 17 00 51" 
        height="700px" 
        style="border-radius:10px;"/>
 </p>
