@@ -9,7 +9,7 @@ A React Native (Expo) application with an iOS Widget Extension that displays cur
 - iOS Widget Extension (WidgetKit) with shared data
 - Live Activity support (ActivityKit)
 
-## Setup
+## Setup 
    - `npm install`
    - `npx expo prebuild -p ios`
 
