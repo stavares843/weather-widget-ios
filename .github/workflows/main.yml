@@ -19,13 +19,13 @@ jobs:
         with:
           trigger: "/ci"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
 
       - name: Add ci label
         if: steps.trigger.outputs.triggered == 'true'
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.token }}
           script: |
             const { owner, repo } = context.repo;
             const prNumber = context.payload.issue.number;
