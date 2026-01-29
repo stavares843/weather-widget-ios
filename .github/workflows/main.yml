@@ -1,0 +1,47 @@
+name: Add CI Label
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  add-ci-label:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Detect /ci command
+        id: trigger
+        uses: khan/pull-request-comment-trigger@v1.1.0
+        with:
+          trigger: "/ci"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add ci label
+        if: steps.trigger.outputs.triggered == 'true'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { owner, repo } = context.repo;
+            const prNumber = context.payload.issue.number;
+
+            try {
+              await github.rest.issues.addLabels({
+                owner,
+                repo,
+                issue_number: prNumber,
+                labels: ['ci'],
+              });
+              console.log(`Added ci label to PR #${prNumber}`);
+            } catch (error) {
+              if (error?.status === 422) {
+                console.log(`Label 'ci' already present on PR #${prNumber}`);
+              } else {
+                throw error;
+              }
+            }
